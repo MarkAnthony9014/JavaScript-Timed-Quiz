@@ -7,12 +7,48 @@ body {
     background-color: #0a0a0a;
     align-items: center;
     text-align: center;
-    color: #ffffff;
     padding: 50px, 0, 50px, 0;
+    /*display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;*/
+}
+
+.view-score-starter{
+    color: #b3e5fc;
+    align-items: left;
+    font-weight: lighter;
+    font-size: small;
+    text-align: left;
 }
 
 .starter-header {
-    padding: 100px 0;
+    padding: 100px 0 20px 0;
     margin: 50px 0 20px 0;
     color: #9a86ba;
+}
+
+.starter-p {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    padding: 50px 100px 50px 100px;
+    margin: 0 auto;
+    color: #b3e5fc;
+    border: 1px, solid, #ffff;
+    word-wrap: break-word;
+}
+
+.start-quiz-btn {
+    color: #ffff;
+    background-color: #9a86ba;
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0px 0px 2px 2px rgb(255, 255, 255);
+}
+
+.start-quiz-btn:hover {
+   background-color:#b3e5fc;
+   transition: 0.7s;
+   color:#0a0a0a;
 }

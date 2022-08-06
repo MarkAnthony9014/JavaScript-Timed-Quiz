@@ -1,0 +1,18 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family:'Roboto', sans-serif; /*Google Font designed by Christian Robertson*/
+    background-color: #0a0a0a;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    padding: 50px, 0, 50px, 0;
+}
+
+.starter-header {
+    padding: 100px 0;
+    margin: 50px 0 20px 0;
+    color: #9a86ba;
+}

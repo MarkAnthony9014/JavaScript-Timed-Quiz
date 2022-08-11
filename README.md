@@ -15,3 +15,9 @@
 - Use JavaScript to retrieve user input (answers) and store them in variables. 
 - Make sure that the data is being set, stringified, then retreived and parsed back for JavaScript.
 - Show the user their score and where it ranks. 
+
+
+
+### Deployed GitHub Page Link
+
+[GitHubPageLink](https://markanthony9014.github.io/JavaScript-Timed-Quiz/)

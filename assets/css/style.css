@@ -1,7 +1,7 @@
 * {
     box-sizing: border-box;
 }
-
+/*colors for the page*/
 :root {
     --primary-color: #0a0a0a;
     --secondary-color: #9a86ba;
@@ -19,7 +19,7 @@ body {
     flex-wrap: wrap;
     justify-content: space-evenly;*/
 }
-
+/*styling for the header/questions*/
 .view-score-starter{
     color: var(--tertiary-color);
     align-items: left;

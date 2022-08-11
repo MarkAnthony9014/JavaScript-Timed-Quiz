@@ -1,3 +1,5 @@
+
+//list of variables
 var timerEl = document.getElementById("timer");
 var questionEl = document.getElementById("header-question");
 var answersEl = document.getElementById("answer-choices");
@@ -6,43 +8,23 @@ var buttonEl = document.getElementById("start-quiz-btn");
 var currentIndex = 0;
 var timeLeft = 75;
 
-//setup the questions array
 
-var questionsArr = [
-    "Which element was the reset() function specifically created for?",
-    "Which of these functions can add something to the end of a div?",
-    "Which of these functions can check to see if an element matches a certain criteria?",
-    "Which of these functions can add content to the end of an array?",
-    "How can you stop the default behavior of a browser?",
-]
+var qH3 = document.createElement("h3");
+var btn1 = document.createElement("button");
+var btn2 = document.createElement("button");
+var btn3 = document.createElement("button");
+var btn4 = document.createElement("button");
 
-//setup the answers arrays
-//array of choices for question 1
-var choices1Arr = [
-    "<div>","<body>","<button>", "<form>",
-]
-//array of choices for question 2
-var choices2Arr = [
-    "appendChild", "appendParent", "createElement", "textContent",
-]
-//array of choices for question 3
-var choices3Arr = [
-    "querySelector()", "push()", "matches()", "setTimeOut",
-]
-//array of choices for question 4
-var choices4Arr = [
-    "pull()", "push()", "addToArray()", "pushArray()",
-]
-//array of choices for question 5
-var choices5Arr = [
-    "click.preventDefault", "stopDefault()", "event.preventDefault", "browserBlock",
-]
 
+
+
+
+//array of objects for questions, answer choices, and correct answer choices. 
 var questions = [
-    {
+    {  
         text: "Which element was the reset() function specifically created for?",
         choices: ["<div>","<body>","<button>","<form>"],
-        correct: "<form>"
+        correct: "<form>",
     },
     {
         text: "Which of these functions can add something to the end of a div?",
@@ -67,15 +49,16 @@ var questions = [
 ]
 
 
-
-
-
+//function to start the quiz, start the timer, and generate the question
 function startQuiz() {
    timerStart();
    generateQuestion();
+   
 }
 
+// function to create question and answer elements
 function generateQuestion() {
+
     containerEl.innerHTML = "";
     var qH3 = document.createElement("h3");
     var btn1 = document.createElement("button");
@@ -93,21 +76,53 @@ function generateQuestion() {
     btn4.textContent = questions[currentIndex].choices[3];
     btn4.addEventListener("click", checkAnswer);
     containerEl.append(qH3, btn1, btn2, btn3, btn4);
+
+    if (questions[currentIndex] === 4) {
+        var qH3 = ""
+    }
 }
+
+//function to check if the answer is correct, if not, deprecate time by 10 seconds.
 
 function checkAnswer(event) {
     var selectedAnswer = event.target.textContent;
-    alert("You have selected " + selectedAnswer);
+    //alert("You have selected " + selectedAnswer);
     //this is where you check your answer, if/else statement.
-    if (selectedAnswer === questions.correct.textContent) {
-        alert("Wrong Answer")
-        timeLeft.innerHTML = -10;
-        generateQuestion;
+    if (selectedAnswer === questions[currentIndex].correct) {
+        alert("Correct!");
+        }
+
+   else {
+        timeLeft -= 10;
+        alert("Wrong!");
     }
+
 currentIndex++;
-generateQuestion() 
+
+generateQuestion()
+    
 }
 
+
+var clearPage = function() {
+    containerEl = ""
+}
+
+
+function showScore () {
+
+       containerEl = "";
+       var scoreHeader = document.createElement("h2");
+       scoreHeader.textContent = "Your Score: " + timeLeft;
+       scoreHeader.style.color = "white";
+       var enterInitials = document.createElement("form");
+       enterInitials.textContent = "Your Initials";
+       yourScore.style.color = "white";
+       var enterBtn = document.createElement("submit");
+       enterBtn.textContent = "Enter";
+       containerEl.append(scoreHeader, enterInitials, enterBtn)
+
+    }
 
 //create a timer function
 
@@ -119,17 +134,31 @@ function timerStart() {
         timerEl.textContent = timeLeft + ' left';
         timeLeft--;
       }
-      
-      else if (timeLeft === 1) {
-        timerEl.textContent = timeLeft + ' left';
-        timeLeft--;
-      }
-      
-      else {
-        timerEl.textContent = '';
-        clearInterval(timeInterval);
-      }
+     //when to end the quiz
+      else if (timeLeft === 0 || questions[currentIndex].text === 4) {
+            clearPage();
+            showScore ();
+            clearInterval(timeInterval);
+
+
+        //showScore();
+      };
     }, 1000);
-} 
+}
+
+function showScore () {
+
+    containerEl = "";
+    var scoreHeader = document.createElement("h2");
+    scoreHeader.textContent = "Your Score: " + timeLeft;
+    scoreHeader.style.color = "white";
+    var enterInitials = document.createElement("form");
+    enterInitials.textContent = "Your Initials";
+    yourScore.style.color = "white";
+    var enterBtn = document.createElement("submit");
+    enterBtn.textContent = "Enter";
+    containerEl.append(scoreHeader, enterInitials, enterBtn)
+
+ }
 
 buttonEl.addEventListener("click", startQuiz)
